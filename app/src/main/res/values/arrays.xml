@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="contactos">
+        <item>@string/action_koi</item>
+        <item>@string/action_facebook</item>
+        <item>@string/action_linkedin</item>
+        <item>@string/action_wordpress</item>
+    </array>
+</resources>
