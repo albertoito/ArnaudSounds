@@ -50,11 +50,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        releasePlayer();
+
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_share:
+                shareApp();
+                return true;
+            case R.id.action_arnaud:
+                showContactDialog();
+                return true;
+            case R.id.action_about:
+                showAboutDialog();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
+        if (mMediaPlayer != null && mMediaPlayer.isPlaying())
             mMediaPlayer.stop();
-        }
     }
 
     private void setButtons() {
@@ -75,11 +100,10 @@ public class MainActivity extends AppCompatActivity {
         if (btn != null)
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     if (volumeIsLow())
-                        increaseVolume(v);
-
-                    play(v);
+                        increaseVolume(view);
+                    play(view);
                 }
             });
     }
@@ -96,19 +120,30 @@ public class MainActivity extends AppCompatActivity {
         mMediaPlayer.start();
     }
 
-    private int getRawId(int viewId){
-        switch (viewId){
-            case R.id.btnNo: return R.raw.no;
-            case R.id.btnNooo: return R.raw.nooo;
-            case R.id.btnPorfavor: return R.raw.por_favor;
-            case R.id.btnMonos: return R.raw.monos;
-            case R.id.btnHacerMierda: return R.raw.hacer_mierda;
-            case R.id.btnKamaeMierda: return R.raw.kamae_mierda;
-            case R.id.btnCuandoKarate: return R.raw.cuando_karate;
-            case R.id.btnNoEsKarate: return R.raw.no_es_karate;
-            case R.id.btnNoEsBaile: return R.raw.no_es_baile;
-            case R.id.btnArnaud: return R.raw.arnaud;
-            case R.id.action_arnaud: return R.raw.arnaud_pronuntiation;
+    private int getRawId(int viewId) {
+        switch (viewId) {
+            case R.id.btnNo:
+                return R.raw.no;
+            case R.id.btnNooo:
+                return R.raw.nooo;
+            case R.id.btnPorfavor:
+                return R.raw.por_favor;
+            case R.id.btnMonos:
+                return R.raw.monos;
+            case R.id.btnHacerMierda:
+                return R.raw.hacer_mierda;
+            case R.id.btnKamaeMierda:
+                return R.raw.kamae_mierda;
+            case R.id.btnCuandoKarate:
+                return R.raw.cuando_karate;
+            case R.id.btnNoEsKarate:
+                return R.raw.no_es_karate;
+            case R.id.btnNoEsBaile:
+                return R.raw.no_es_baile;
+            case R.id.btnArnaud:
+                return R.raw.arnaud;
+            case R.id.action_arnaud:
+                return R.raw.arnaud_pronuntiation;
         }
 
         return R.raw.por_favor;
@@ -142,38 +177,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    private void shareApp() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.url_share_app));
+            startActivity(Intent.createChooser(intent, getString(R.string.share_title)));
+        } catch (Exception e) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.action_koi:
-                openUrl(R.string.url_koi);
-                break;
-            case R.id.action_contact:
-                openUrl(R.string.url_contact);
-                break;
-            case R.id.action_linkedin:
-                openUrl(R.string.url_linkedin);
-                break;
-            case R.id.action_facebook:
-                openUrl(R.string.url_facebook);
-                break;
-            case R.id.action_arnaud:
-                playByRes(R.raw.arnaud_pronuntiation);
-                break;
-            case R.id.action_about:
-                showAbout();
-                break;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void openUrl(int urlId) {
@@ -181,9 +193,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void showAbout() {
-        AlertDialog about = new AlertDialog.Builder(MainActivity.this).create();
-        about.setTitle(R.string.action_about);
+    private void showAboutDialog() {
+        AlertDialog about = new AlertDialog.Builder(MainActivity.this).setTitle(R.string.action_about).create();
         about.setMessage(getString(R.string.version));
         about.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
@@ -192,5 +203,35 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         about.show();
+    }
+
+    private void showContactDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Seleccione el medio").setItems(R.array.contactos, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                openUrlFromDialog(which);
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void openUrlFromDialog(int index) {
+        switch (index) {
+            case 0:
+                openUrl(R.string.url_koi);
+                break;
+            case 1:
+                openUrl(R.string.url_facebook);
+                break;
+            case 2:
+                openUrl(R.string.url_linkedin);
+                break;
+            case 3:
+                openUrl(R.string.url_wordpress);
+                break;
+        }
     }
 }
