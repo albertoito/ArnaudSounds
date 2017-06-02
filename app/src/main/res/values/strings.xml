@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Arnaud Sounds</string>
+
+    <!-- Menu options -->
+    <string name="action_koi">Koi Martial Art</string>
+    <string name="action_contact">Blog</string>
+    <string name="action_linkedin">LinkedIn</string>
+    <string name="action_facebook">Facebook</string>
+    <string name="action_arnaud">Shiro Kuma</string>
+    <string name="action_about">Versión</string>
+
+    <!-- Urls -->
+    <string name="url_koi">http://www.koimartialart.com/</string>
+    <string name="url_contact">https://kumafr.wordpress.com/</string>
+    <string name="url_linkedin">https://www.linkedin.com/in/arnaudcousergue/</string>
+    <string name="url_facebook">https://www.facebook.com/arnaud.cousergue</string>
+
+    <!-- Snackbar text -->
+    <string name="sb_entre_lineas">Ninjutsu te enseña a leer entre líneas</string>
+    <string name="sb_vol_mono">Tienes que aumentar el volumen, mono</string>
+
+    <!-- Versión -->
+    <string name="version">1.1.0 by Jihiryu Dojo Mobile</string>
+
+</resources>

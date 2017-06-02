@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/arnaud_back"
+    android:scaleType="fitCenter"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.jihiryu.albertoi.arnaudsounds.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:useDefaultMargins="true"
+            android:columnCount="2"
+            android:rowCount="5"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnNo"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:text="No"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnNooo"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:text="Nooo!"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnPorfavor"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:text="Por favor"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnMonos"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:text="Monos"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnHacerMierda"
+                android:layout_column="0"
+                android:layout_row="2"
+                android:text="Hiciste mierda"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnKamaeMierda"
+                android:layout_column="1"
+                android:layout_row="2"
+                android:text="Kamae de mierda"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnCuandoKarate"
+                android:layout_column="0"
+                android:layout_row="3"
+                android:text="Karate?"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnNoEsKarate"
+                android:layout_column="1"
+                android:layout_row="3"
+                android:text="No es karate"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnNoEsBaile"
+                android:layout_column="0"
+                android:layout_row="4"
+                android:text="No es baile"
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnArnaud"
+                android:layout_column="1"
+                android:layout_row="4"
+                android:text="Arnaud..."
+                android:background="@drawable/round_button"
+                android:theme="@style/BtnSound" />
+        </GridLayout>
+
+</RelativeLayout>
